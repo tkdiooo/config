@@ -1,0 +1,43 @@
+server:
+  port: 8082
+  address: localhost
+  contextPath: /mybatis
+  tomcat:
+    uri-encoding: utf-8
+#dubbo setting
+dubbo:
+  annotation:
+    #服务类所在的包路径，多个包名可以使用英文逗号分隔
+    package:
+  application:
+    #服务注册名称信息
+    name: dubbo_provider
+    #日志适配
+    logger: slf4j
+  registry:
+    #zookeeper注册中心服务地址
+    address: zookeeper://192.168.37.128:2181
+    #注册中心不存在时，是否报错
+    check: true
+    #是否向此注册中心注册服务，如果设为false，将只订阅，不注册
+    register: true
+    #是否向此注册中心订阅服务，如果设为false，将只注册，不订阅
+    subscribe: false
+    #注册中心请求超时时间(毫秒)
+    timeout: 2000
+  protocol:
+    #通信协议，默认dubbo
+    name: dubbo
+    #协议端口，默认20880
+    port: 20880
+    #序列化实现
+    serialization:  Kryo
+    #SerializationOptimizer接口实现，添加需要序列化的类
+    optimizer:
+
+
+#spring.cloud.config
+#--spring.cloud.config.name=jsp
+#--spring.cloud.config.profile=deve
+#--spring.cloud.config.label=config
+#--spring.cloud.config.uri=http://localhost:8888
